@@ -6,8 +6,8 @@ android {
         applicationId "com.jyyz.lls"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 319
-        versionName "319"
+        versionCode 320
+        versionName "320"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

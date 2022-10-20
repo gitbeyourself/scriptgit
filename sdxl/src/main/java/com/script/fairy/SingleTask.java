@@ -410,7 +410,10 @@ public class SingleTask  {
                     result = mFairy.findPic(915, 159, 1159, 535, "Right_txqw.png");
                     mFairy.onTap(0.8f, result, "右侧任务", 1000);
 
-                    result = mFairy.findPic("txqw_Receive.png");
+                    result = mFairy.findPic(968,542,1126,611, "zdjq.png");
+                    mFairy.onTap(0.8f, result, "自动接取", 1000);
+
+                    result = mFairy.findPic(756,537,1150,683,"txqw_Receive.png");
                     mFairy.onTap(0.8f, result, "天下奇闻领取", 2000);
                     if (result.sim > 0.8f) {
                         result = mFairy.findPic("txqw_Receive.png");
@@ -418,7 +421,7 @@ public class SingleTask  {
                         mFairy.onTap(0.8f, result, "天下奇闻领取", 2000);
                     }
 
-                    result = mFairy.findPic(1031, 139, 1245, 516, "Taskbar txqw.png");
+                    result = mFairy.findPic(900,148,1195,530, "Task bar txqw.png");
                     if (dazeTime > 12) {
                         if (result.sim > 0.7f) {
                             mFairy.onTap(0.7f, result, "天下奇闻", 1000);
@@ -745,7 +748,7 @@ public class SingleTask  {
                 result = mFairy.findPic("Welfare Collection1.png");
                 mFairy.onTap(0.8f, result, "登录豪礼领取", 1000);
 
-                result = mFairy.findPic("Welfare Collection2.png");
+                result = mFairy.findPic(new String[]{"Welfare Collection2.png","Welfare Collection.png"});
                 mFairy.onTap(0.8f, result, 1078,174,1101,192,"每日礼包领取", 1000);
 
                 result = mFairy.findPic("Welfare Collection3.png");

@@ -1,1 +1,34 @@
-{"data": [{"option_id": "6069", "option_type": "1", "option_name": "日常副本", "multi_select": 1, "option_data": [{"id": "41415", "title": "万里听风"}, {"id": "41417", "title": "江湖行商"}, {"id": "41419", "title": "聚义平冤"}, {"id": "41421", "title": "弈中幻境"}, {"id": "41423", "title": "山珍海味"}]}, {"option_id": "6087", "option_type": "2", "option_name": "江湖纪事", "multi_select": 0, "option_data": [{"id": "41499", "title": "不选择"}, {"id": "41503", "title": "羡鱼港-新秀"}, {"id": "41505", "title": "万劫山庄-新秀"}, {"id": "41507", "title": "无人谷-新秀"}, {"id": "41509", "title": "羡鱼港-侠士"}, {"id": "41511", "title": "万劫山庄-侠士"}, {"id": "41513", "title": "无人谷-侠士"}]}], "tops": ""}
+{
+	"data": [{
+		"option_id": "6069",
+		"option_type": "1",
+		"option_name": "日常副本",
+		"multi_select": 1,
+		"option_data": [{
+			"id": "41415",
+			"title": "万里听风"
+		}, {
+			"id": "41417",
+			"title": "江湖行商"
+		}, {
+			"id": "41419",
+			"title": "聚义平冤"
+		}, {
+			"id": "41421",
+			"title": "弈中幻境"
+		}, {
+			"id": "41423",
+			"title": "山珍海味"
+		}]
+	}, {
+		"option_id": "6087",
+		"option_type": "2",
+		"option_name": "江湖纪事",
+		"multi_select": 0,
+		"option_data": [{
+			"id": "41499",
+			"title": "不选择"
+		}]
+	}],
+	"tops": ""
+}

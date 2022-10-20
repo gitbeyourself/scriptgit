@@ -33,7 +33,6 @@ public class Abnormal extends TaskContent {
 
     public Abnormal(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
-        yxdUtil = new YxdUtil(ypFairy);
     }
 
     int count_1 = 0;

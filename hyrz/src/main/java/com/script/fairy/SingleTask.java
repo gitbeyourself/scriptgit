@@ -41,7 +41,7 @@ public class SingleTask extends TaskContent {
             err = 0;
             for (int i = 0; i < 2; i++) {
                 mFairy.condit();
-                result=mFairy.findPic("fight.png");
+                result=mFairy.findPic(322,150,534,240,"fight.png");
                 mFairy.onTap(0.8f,result,846,544,891,564,"选择出战忍者",1000);
 
                 result = mFairy.findPic("Resurrection.png");
@@ -260,7 +260,7 @@ public class SingleTask extends TaskContent {
             result = mFairy.findPic("adventure.png");
             mFairy.onTap(0.8f, result, "冒险", 3000);
 
-            result = mFairy.findPic("Slide chapter.png");
+            result = mFairy.findPic(988,576,1221,707,"Slide chapter.png");
             mFairy.onTap(0.8f, result, 958, 327, 971, 343, "选择章节", 100);
             mFairy.onTap(0.8f, result, 958, 327, 971, 343, "选择章节", 100);
             mFairy.onTap(0.8f, result, 958, 327, 971, 343, "选择章节", 100);
@@ -320,7 +320,7 @@ public class SingleTask extends TaskContent {
                 mFairy.onTap(0.8f, result, "冒险", 3000);
 
 
-                result = mFairy.findPic("Slide chapter.png");
+                result = mFairy.findPic(988,576,1221,707,"Slide chapter.png");
                 mFairy.onTap(0.8f, result, 217, 52, 241, 88, "选择精英副本", 100);
 
                 result = mFairy.findPic("Departure.png");
@@ -377,7 +377,7 @@ public class SingleTask extends TaskContent {
                 mFairy.onTap(0.8f, result, "冒险", 3000);
 
 
-                result = mFairy.findPic("Slide chapter.png");
+                result = mFairy.findPic(988,576,1221,707,"Slide chapter.png");
                 mFairy.onTap(0.8f, result, 217, 52, 241, 88, "选择精英副本", 100);
 
                 result = mFairy.findPic("Departure.png");
@@ -1406,13 +1406,13 @@ public class SingleTask extends TaskContent {
                 result = mFairy.findPic(26, 17, 1243, 682, new  String[]{"tx.png","tx1.png"});
                 mFairy.onTap(0.8f, result, "小队突袭", 1000);
 
-                result1 = mFairy.findPic("matching.png");
+                result1 = mFairy.findPic(1071,512,1247,707,"matching.png");
                 if (result1.sim > 0.8f) {
                     if (AtFairyConfig.getOption("txsb").equals("1")) {
-                        result = mFairy.findPic("txsbgx.png");
+                        result = mFairy.findPic(477,651,531,701,"txsbgx.png");
                         mFairy.onTap(0.8f, result, "突袭三倍勾选", 1000);
                     }
-                    result = mFairy.findPic("txcs.png");
+                    result = mFairy.findPic(724,621,778,654,"txcs.png");
                     LtLog.e(mFairy.getLineInfo(0.8f, result, "突袭次数没了结束"));
                     if (result.sim > 0.8f) {
                         setTaskEnd();
@@ -1557,7 +1557,7 @@ public class SingleTask extends TaskContent {
                 result = mFairy.findPic(26, 17, 1243, 682, new  String[]{"fzzj.png","fzzj1.png"});
                 mFairy.onTap(0.8f, result, "丰饶之间", 1000);
 
-                result = mFairy.findPic("fryj.png");
+                result = mFairy.findPic(522,583,763,681,"fryj.png");
                 mFairy.onTap(0.8f, result, "丰饶一键", 2000);
                 mFairy.onTap(0.8f, result, 641, 452, 675, 470, "丰饶一键确定", 3000);
                 if (result.sim > 0.8f) {
@@ -1587,24 +1587,19 @@ public class SingleTask extends TaskContent {
                 mFairy.onTap(0.8f, result, "组织", 1000);
 
 
-                result = mFairy.findPic("Organizational interface.png");
+                result = mFairy.findPic(148,168,273,643,"Organizational interface.png");
                 mFairy.onTap(0.8f, result, "组织玩法", 1000);
 
-                result = mFairy.findPic("Pray for blessing.png");
+                result = mFairy.findPic(964,129,1127,250,"Pray for blessing.png");
                 mFairy.onTap(0.8f, result, "祈福前往", 1000);
 
-                result = mFairy.findPic("Blessing times.png");
+                result = mFairy.findPic(434,494,700,633,"Blessing times.png");
                 mFairy.onTap(0.8f, result, 574, 574, 604, 593, "祈福", 3000);
                 mFairy.onTap(0.8f, result, 1213, 26, 1231, 44, "祈福", 1000);
 
-                result = mFairy.findPic("qf0.png");
+                result = mFairy.findPic(479,250,792,372,"shangxian.png");
                 if (result.sim > 0.8f) {
-                    mFairy.onTap(0.8f, result, 1184, 192, 1195, 204, "祈福0", 1000);
-                    mFairy.onTap(0.8f, result, 1184, 192, 1195, 204, "祈福0", 1000);
-                    mFairy.onTap(0.8f, result, 1194, 294, 1208, 306, "祈福0", 1000);
-                    mFairy.onTap(0.8f, result, 1194, 294, 1208, 306, "祈福0", 1000);
-                    mFairy.onTap(0.8f, result, 1189, 405, 1207, 425, "祈福0", 1000);
-                    mFairy.onTap(0.8f, result, 1189, 405, 1207, 425, "祈福0", 1000);
+                    mFairy.onTap(0.8f, result, 630,448,638,460, "祈福0", 1000);
                     setTaskEnd();
                     return;
                 }
@@ -1627,13 +1622,13 @@ public class SingleTask extends TaskContent {
             }
             public void content_1() throws Exception {
                 if (overtime(20, 99))return;
-                result = mFairy.findPic("adventure.png");
+                result = mFairy.findPic(1053,486,1267,713,"adventure.png");
                 mFairy.onTap(0.8f, result, 746, 38, 759, 52, "招财", 1000);
 
-                result = mFairy.findPic("mfzc.png");
+                result = mFairy.findPic(565,515,840,647,"mfzc.png");
                 mFairy.onTap(0.8f, result, "免费招财", 1000);
 
-                result = mFairy.findPic("zcstop.png");
+                result = mFairy.findPic(565,515,840,647,"zcstop.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo(0.8f, result, "招财结束"));
                     setTaskEnd();return;
@@ -1655,13 +1650,11 @@ public class SingleTask extends TaskContent {
                 result = mFairy.findPic(26, 17, 1243, 682, new String[]{"phb.png","phb1.png"});
                 mFairy.onTap(0.8f, result, "排行榜", 1000);
 
-                result = mFairy.findPic("adventure.png");
+                result = mFairy.findPic(8,114,138,363,"adventure.png");
                 if (result.sim > 0.8f) {
                     mFairy.ranSwipe(352, 326, 950, 304, 1000, 1000);
                 }
                 result = mFairy.findPic(1130, 127, 1264, 566, "taplike.png");
-                mFairy.onTap(0.8f, result, "点赞", 1000);
-                mFairy.onTap(0.8f, result, "点赞", 1000);
                 mFairy.onTap(0.8f, result, "点赞", 1000);
                 if (result.sim > 0.8f) {
                      setTaskEnd();return;
@@ -1742,7 +1735,7 @@ public class SingleTask extends TaskContent {
                 result = mFairy.findPic("adventure.png");
                 mFairy.onTap(0.8f, result, 48, 274, 65, 284, "邮件", 1000);
 
-                result = mFairy.findPic("yjtq.png");
+                result = mFairy.findPic(406,533,619,627,"yjtq.png");
                 mFairy.onTap(0.8f, result, "一键提取", 1000);
                 if (result.sim > 0.8f) {
                     setTaskEnd();return;
@@ -2026,16 +2019,15 @@ public class SingleTask extends TaskContent {
                 mFairy.onTap(0.8f, result, 228, 329, 245, 346, "高级设置", 1000);
                 if (result.sim > 0.8f) {
                     mFairy.ranSwipe(562, 203, 567, 585, 1000, 1000);
-                    for (int i = 0; i < 6; i++) {
-                        mFairy.condit();
-                        result = mFairy.findPic(312, 162, 1122, 630, "Set check.png");
-                        mFairy.onTap(0.8f, result, "取消勾选", 100);
-                    }
                     mFairy.ranSwipe(567, 585, 562, 203, 1000, 100);
                     for (int i = 0; i < 6; i++) {
                         mFairy.condit();
-                        result = mFairy.findPic(312, 162, 1122, 630, "Set check.png");
-                        mFairy.onTap(0.8f, result, "取消勾选", 1000);
+                        result = mFairy.findPic(502,159,659,552, "zishen.png");
+                        mFairy.onTap(0.8f, result, result.x+238,result.y+6,result.x+247,result.y+22,"取消勾选", 1000);
+                        result = mFairy.findPic(502,159,659,552, "duiyou.png");
+                        mFairy.onTap(0.8f, result, result.x+238,result.y+6,result.x+247,result.y+22,"取消勾选", 1000);
+                        result = mFairy.findPic(502,159,659,552, "difang.png");
+                        mFairy.onTap(0.8f, result, result.x+238,result.y+6,result.x+247,result.y+22,"取消勾选", 1000);
                     }
                     gameUtil.close();
                     setTaskEnd();

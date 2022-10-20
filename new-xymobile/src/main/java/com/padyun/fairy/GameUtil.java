@@ -431,7 +431,7 @@ public class GameUtil extends TaskContent {
             public void content_0() throws Exception {
                 close(1);
                 if (str.equals("天外噬灵渊") || str.equals("天外霜火岭") || str.equals("天外焚天台")) {
-                    setTaskName(4);
+                    setTaskName(2);
                     return;
                 }
                 if (str.equals("氏族地宫")) {
@@ -475,6 +475,13 @@ public class GameUtil extends TaskContent {
                 if (overtime(15, 0)) return;
                 result = mFairy.findPic( "tut.png");
                 mFairy.onTap(0.8f, result, 990,121,1001,130, "关闭图腾", Sleep);
+
+                result = mFairy.findPic(new  String[]{"szdgzhong.png","weimianzhong.png","weimianzhong1.png"});
+                if (result.sim>0.8f) {
+                    close(1);
+                    LtLog.e(mFairy.getLineInfo("位面中"));
+                    setTaskName(5);return;
+                }
 
                 result = mFairy.findPic(876, 5, 1120, 146, "daily.png");
                 mFairy.onTap(0.8f, result, 1181, 71, 1203, 90, "打开地图", Sleep);
@@ -529,12 +536,14 @@ public class GameUtil extends TaskContent {
                     }else {
                         mFairy.onTap(759, 431, 795, 448, "确定传送", Sleep);
                     }
+
                     result = mFairy.findPic(new  String[]{"szdgzhong.png","weimianzhong.png","weimianzhong1.png"});
                     if (result.sim>0.8f) {
                         close(1);
                         LtLog.e(mFairy.getLineInfo("位面中"));
                         setTaskName(5);return;
                     }
+
                     setTaskName(3);
                     return;
                 }

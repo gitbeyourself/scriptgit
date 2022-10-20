@@ -163,8 +163,9 @@ public class LimitlessTask {
                             LtLog.e(mFairy.getLineInfo("没有找到滑动一下"));
                             Thread.sleep(1000);
                         }
-                        if (hdcount >= 10) {
+                        if (hdcount >= 12) {
                             util.close();
+                            hdcount=0;
                         }
                     }
                 }

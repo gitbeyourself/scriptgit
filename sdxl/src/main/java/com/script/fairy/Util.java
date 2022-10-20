@@ -302,8 +302,8 @@ public class Util {
                 i=0;
             }
             result = mFairy.findPic(657, 5, 1278, 323, "fork.png");
-            mFairy.onTap(0.8f, result, "叉", 1000);
-            if (result.sim > 0.8f) {
+            mFairy.onTap(0.3f, result, "叉", 1000);
+            if (result.sim > 0.3f) {
                 i=0;
             }
             result = mFairy.findPic(657, 5, 1278, 323, "fork1.png");
@@ -550,11 +550,9 @@ public class Util {
                 result = mFairy.findPic(969,479,1273,713,"set2.png");
                 mFairy.onTap(0.8f, result, "设置", 1000);
 
-                result = mFairy.findPic(new String[]{"Power saving.png","Power saving2.png"});
-                mFairy.onTap(0.8f, result,  "省电模式", 3000);
-
-                result = mFairy.findPic("Power saving3.png");
+                result = mFairy.findPic(38,46,126,263,"shezhi.png");
                 if (result.sim >0.8f){
+                    mFairy.onTap(0.8f, result,  441,376,446,382,"省电模式", 3000);
                     LtLog.e("设置结束------");
                     mFairy.onTap(0.8f, result,  1239,21,1254,36,"关闭", 3000);
                     setTaskEnd();return;

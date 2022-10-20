@@ -1,6 +1,7 @@
 package com.example.administrator.yys;
 
 
+import com.script.framework.AtFairyImpl;
 import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.LtLog;
 import com.script.opencvapi.utils.Utils;
@@ -16,7 +17,6 @@ import static com.script.opencvapi.AtFairy2.TASK_STATE_FINISH;
  */
 
 public class TaskThread {//任务线程
-
     yys mFairy;
     JSONObject optionJson;
     CommonFunction comm;
@@ -62,28 +62,39 @@ public class TaskThread {//任务线程
         switch (task_id1) {
             //探索挑战（同纸人操作）
             case 1599:
+
                 singleTask.tsYB();
                 break;
             //自动挑战（同纸人操作）
             case 1597:
+
                 singleTask.zuduiYB();
                 break;
             //结界突破
             case 1605:
+            case 2791:
                 singleTask.tp();
+                break;
+            //阴阳寮突破
+            case 2787:
+            case 2801:
+                singleTask.yyltp();
                 break;
             //庭院挂机
             case 1282:
+            case 2789:
                 if (yys.taskStartUp == true && task == 0) {
                     LtLog.e(comm.getText("***********************庭院挂机***********************"));
                     limitlessTask.Daze();
                 }
                 break;
             case 2358:
+            case 2793:
                 //自动挑战（同纸人操作）
                 singleTask.zuduiYB2();
                 break;
             case 2378:
+            case 2795:
                 //探索挑战（同纸人操作）
                 singleTask.tsYB2();
                 break;

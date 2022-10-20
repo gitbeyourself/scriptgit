@@ -19,6 +19,7 @@ public class LimitlessTask extends TaskContent {
     AtFairyImpl mFairy;
     FindResult result;
     FindResult result1;
+    FindResult result2;
     TimingActivity timingActivity;
     GameUtil gameUtil;
     OtherGame otherGame;
@@ -92,11 +93,12 @@ public class LimitlessTask extends TaskContent {
             public void create() throws Exception {
                 timingActivity.timingActivity();
                 //定位坐标
-                if (!AtFairyConfig.getOption("back").equals("")) {
+                if (!AtFairyConfig.getOption("back").equals("") || AtFairyConfig.getOption("back") != null || !AtFairyConfig.getOption("back").equals("")) {
                     back = strSplit(AtFairyConfig.getOption("back"));
+                    LtLog.e("时间"+back);
                 }
                 //清包
-                if (!AtFairyConfig.getOption("optime1").equals("")) {
+                if (!AtFairyConfig.getOption("optime1").equals("") && !AtFairyConfig.getOption("optime1").equals("0")) {
                     qb = strSplit(AtFairyConfig.getOption("optime1"));
                 }
                 //升级宝石
@@ -121,11 +123,11 @@ public class LimitlessTask extends TaskContent {
                 if (!AtFairyConfig.getOption("scsj").equals("")) {
                     scsj = strSplit(AtFairyConfig.getOption("scsj"));
                 }
-                //七星炼宝
+                /*//七星炼宝
                 if (AtFairyConfig.getOption("qxlb").equals("1")) {
                     gameUtil.goCity("轩辕");
                     sevenStar();
-                }
+                }*/
                 //血盟清剿
                 if (AtFairyConfig.getOption("xmqj").equals("1")) {
                     eliminate();
@@ -165,7 +167,7 @@ public class LimitlessTask extends TaskContent {
 
             public void content_0() throws Exception {
 
-
+                timingActivity.timingActivity();
                 while (mFairy.condit()){
                     //地图 1 2 3
                     if (list.size() == 0) {
@@ -285,7 +287,98 @@ public class LimitlessTask extends TaskContent {
             }
 
             public void content_1() throws Exception {
+                boolean a = false;
                 if (overtime(10, 0)) return;
+
+                result1=mFairy.findPic("bianjing3.png");
+                if (result1.sim > 0.8f){
+                    mFairy.onTap(0.8f,result1,1199,89,1206,99,"打开地图",2500);
+
+                    result  = mFairy.findPic(574,486,595,503,new String[]{"zszb.png","zszb1.png","zszb2.png"});
+                    result1  = mFairy.findPic(560,495,599,522,new String[]{"zszb.png","zszb1.png","zszb2.png"});
+                    if (result.sim > 0.8f || result1.sim > 0.8f){
+                        LtLog.e("天外边境坐牢");
+                        mFairy.onTap(429,339,437,350,"地图",2000);
+                        mFairy.onTap(581,504,582,508,"地图",2000);
+                        mFairy.onTap(1238,36,1251,57,"地图",2000);
+                    }else {
+                        mFairy.sleep(1000);
+                        result  = mFairy.findPic(1205,9,1275,97,"dtgc.png");
+                        mFairy.onTap(0.8f,result1,"关闭地图",1000);
+                    }
+
+                    result  = mFairy.findPic(52,18,1225,670,"delivery2.png");
+                    if (result.sim > 0.8f){
+                        result  = mFairy.findPic(52,18,1225,670,"duihua3.png");
+                        if (result.sim > 0.8f){
+                            mFairy.onTap(0.8f,result,"传送使者对话",Sleep);
+                        }else {
+                            mFairy.onTap(0.8f, result, result.x + 2, result.y + 153, result.x + 3, result.y + 154, "点击传送使者", Sleep);
+                        }
+                    }
+                    result = mFairy.findPic("deliveryyes.png");
+                    mFairy.onTap(0.8f,result,"传送",Sleep);
+                }
+/*
+                if(AtFairyConfig.getOption("zhsz").equals("1")) {
+                    result = mFairy.findPic(876, 5, 1120, 146, "daily.png");
+                    mFairy.onTap(0.8f, result, 1181, 71, 1203, 90, "打开地图", Sleep);
+                    result1 = mFairy.findPic(57, 44, 176, 254, new String[]{"sz1.png", "sz2.png", "sz3.png", "sz4.png", "sz5.png"});
+                    if (result1.sim > 0.8f) {
+                        LtLog.e("氏族内");
+                        result2 = mFairy.findPic(73, 70, 171, 409, new String[]{"gjdigong5.png", "gjdigong6.png", "gjdigong9.png"});
+                        if (result2.sim > 0.8f) {
+                            LtLog.e("氏族地宫内");
+                            a = true;
+                        }
+                    }
+                    if (a) {
+                        result = mFairy.findPic("quyu.png");
+                        mFairy.onTap(0.8f, result, "区域", Sleep);
+
+                        result = mFairy.findPic("chuansong.png");
+                        mFairy.onTap(0.8f, result, "传送", Sleep);
+
+                        result = mFairy.findPic(747, 135, 1153, 591, "lingdi.png");
+                        mFairy.onTap(0.8f, result, "领地", Sleep);
+
+                        result1 = mFairy.findPic("hcWorld.png");
+                        if (result1.sim > 0.8f) {
+                            result = mFairy.findPic("errszftt.png");
+                            if (result.sim > 0.95f) {
+                                mFairy.onTap(0.8f, result, 250, 145, 251, 146, "氏族焚天台二层去一层", Sleep);
+                            } else {
+                                mFairy.onTap(0.8f, result1, 766, 153, 771, 167, "氏族下一层", Sleep);
+                            }
+                            gameUtil.close(1);
+                            setTaskName(1);
+                            return;
+                        }
+                    } else {
+                        mFairy.onTap(1240, 44, 1252, 55, "关叉", 2000);
+
+                        result = mFairy.findPic("Lower expansion.png");
+                        mFairy.onTap(0.8f, result, "打开下扩展栏", 2000);
+
+                        result = mFairy.findPic(825, 443, 1194, 545, new String[]{"qhTotems.png", "tuteng.png"});
+                        if (result.sim > 0.8f) {
+                            mFairy.onTap(0.8f, result, "图腾", Sleep);
+                            x = 0;
+                        } else if (x >= 8) {
+                            result = mFairy.findPic(914, 462, 992, 534, "backcity.png");
+                            mFairy.onTap(0.8f, result, "回城", Sleep);
+                            x = 0;
+                        }
+
+                        result = mFairy.findPic("Deliverysure.png");
+                        mFairy.onTap(0.8f, result, "传送确定", 10000);
+                        if (result.sim > 0.8f) {
+                            setTaskName(6);
+                            return;
+                        }
+                    }
+                }*/
+
                 result = mFairy.findPic("team2.png");
                 mFairy.onTap(0.8f, result, 689,373,698,380,"关掉退伍", Sleep);
 
@@ -304,14 +397,15 @@ public class LimitlessTask extends TaskContent {
             }
 
             public void content_2() throws Exception {
-                if (overtime(60, 0)) return;
+                if (overtime(30, 0)) return;
+
                 result = mFairy.findPic(img);
                 if (result.sim > 0.8f) {
                     if ((yhsr > 70 && yhsr < 90) || yhsr > 100) {
                         mFairy.onTap(0.8f, result, 534, 164, 561, 180, "天外图腾传送", Sleep);
                     }
-                    mFairy.onTap(0.8f, result, "图腾传送", 10000);
-
+                    mFairy.onTap(0.8f, result, "图腾传送", 500);
+                    mFairy.sleep(10000);
 
                     setTaskName(3);
                     return;
@@ -330,6 +424,9 @@ public class LimitlessTask extends TaskContent {
                 result = mFairy.findPic(876, 5, 1120, 146, "daily.png");
                 mFairy.onTap(0.8f, result, 1181, 71, 1203, 90, "打开地图", 3000);
 
+                result = mFairy.findPic(113,17,297,315,new String[]{"Activeinterface.png", "Activeinterface1.png"});
+                mFairy.onTap(0.8f, result, 1229,77,1248,91, "前往关闭", Sleep);
+
 
                 //查看当前的位置
                 result = mFairy.findPic("hcWorld.png");
@@ -337,11 +434,8 @@ public class LimitlessTask extends TaskContent {
                     Thread.sleep(2000);
                     mFairy.condit();
 
-
-
-
                     for (int i = 1; i < 13; i++) {
-                        result = mFairy.findPic(61,45,187,477,"gjdigong" + i + ".png");
+                        result = mFairy.findPic(63,41,178,346,"gjdigong" + i + ".png");
                         if (result.sim > 0.9f) {
                             switch (i) {
                                 case 1:
@@ -396,7 +490,6 @@ public class LimitlessTask extends TaskContent {
                             break;
                         }
                     }
-
 
                     for (int i = 1; i < 13; i++) {
                         result = mFairy.findPic(86,171,146,291,"gjdigong" + i + ".png");
@@ -464,21 +557,25 @@ public class LimitlessTask extends TaskContent {
                     }
                     if (ceng1 != 0) {
                         result = mFairy.findPic(57, 44, 176, 254, new String[]{"sz1.png", "sz2.png", "sz3.png", "sz4.png", "sz5.png"});
-                        if (result.sim > 0.9f) {
+                        LtLog.e("氏族内");
+                        if (result.sim > 0.8f) {
                             tu1 = 11;
                             result = mFairy.findPic(78, 60, 143, 377, "gjdigong5.png");
-                            if (result.sim > 0.9f) {
+                            if (result.sim > 0.85f) {
+                                LtLog.e("霜火岭");
                                 szmap = 1;
                             }
-                            result = mFairy.findPic(78, 60, 143, 377, "gjdigong6.png");
-                            if (result.sim > 0.9f) {
+                            result = mFairy.findPic(76,90,158,320, "gjdigong6.png");
+                            if (result.sim > 0.85f) {
+                                LtLog.e("噬");
                                 szmap = 2;
                             }
                             result = mFairy.findPic(78, 60, 143, 377, "gjdigong9.png");
-                            if (result.sim > 0.9f) {
+                            if (result.sim > 0.85f) {
+                                LtLog.e("焚天台");
                                 szmap = 3;
                             }
-                        }
+                        }/**/
                     }
                     if (tu1 == 12) {
                         ceng1 = 1;
@@ -556,6 +653,7 @@ public class LimitlessTask extends TaskContent {
                     gameUtil.goCity(strpng);
                     setTaskName(3);
                     return;
+
                 }
             }//计算目标图(tu) 层(ceng)，同层图到7、同图不同层到5、不同图到3
 
@@ -596,9 +694,14 @@ public class LimitlessTask extends TaskContent {
             }//同图不同层  ceng  tu 目标图和层 tu ceng1当前所在图和层 ceng2=所在层-目标层
 
             public void content_6() throws Exception {
+                if (overtime(30, 0)) return;
+                result = mFairy.findPic(389, 458, 876, 526, new String[]{"NoBattle3.png", "NoBattle4.png"});
+                if (result.sim > 0.8f){
+                    mFairy.onTap(1123,327,1134,339, "关闭自动战斗", Sleep);
+                }
                 long dazeTime = mFairy.mMatTime(1215, 128, 61, 16, 0.9f);
                 LtLog.e(mFairy.getLineInfo("发呆时间=" + dazeTime));
-                if (dazeTime > 8) {
+                if (dazeTime > 20) {
                     if (tu == 11) {
                         result = mFairy.findPic(876, 5, 1120, 146, "daily.png");
                         mFairy.onTap(0.8f, result, 851, 594, 866, 604, "下车", Sleep);
@@ -606,13 +709,13 @@ public class LimitlessTask extends TaskContent {
                         result = mFairy.findPic(710, 123, 1068, 510, "digongsw.png");
                         mFairy.onTap(0.8f, result, "地宫守卫", 3000);
                         result = mFairy.findPic(22, 96, 530, 607, "shenru.png");
-                        mFairy.onTap(0.8f, result, "深入氏族地宫", Sleep);
+                        mFairy.onTap(0.8f, result, "深入氏族地宫", 5000);
                         result = mFairy.findPic(22, 96, 530, 607, "shenru.png");
-                        mFairy.onTap(0.8f, result, "深入氏族地宫", Sleep);
+                        mFairy.onTap(0.8f, result, "深入氏族地宫", 5000);
                         result = mFairy.findPic(22, 96, 530, 607, "jinru.png");
-                        mFairy.onTap(0.8f, result, "进入氏族地宫", Sleep);
+                        mFairy.onTap(0.8f, result, "进入氏族地宫", 5000);
                         result = mFairy.findPic(22, 96, 530, 607, "jinru.png");
-                        mFairy.onTap(0.8f, result, "进入氏族地宫", Sleep);
+                        mFairy.onTap(0.8f, result, "进入氏族地宫", 5000);
                     }
                     mFairy.initMatTime();
                     setTaskName(3);
@@ -648,23 +751,28 @@ public class LimitlessTask extends TaskContent {
 
                 result = mFairy.findPic(389, 458, 876, 526, new String[]{"NoBattle.png", "NoBattle3.png", "NoBattle4.png"});
                 if (result.sim < 0.8f){
-                    mFairy.onTap(1133, 329, 1141, 337, "开启自动战斗", Sleep);
+                    mFairy.onTap(1123,327,1134,339, "开启自动战斗", Sleep);
                  }
                 /*result = mFairy.findPic(349,429,889,554, "NoBattle1.png");
                 mFairy.onTap(0.8f, result, 1121,311,1125,316,"开启自动战斗", Sleep);*/
                 //gameUtil.moshi();
+                result = mFairy.findPic(1213,197,1275,498,  "shijie.png");
+                mFairy.onTap(0.8f, result, 1239,42,1251,52, "关闭世界地图", Sleep);
+
+                result = mFairy.findPic(1112,1,1267,32,new String[]{"xyc.png","xmld.png","ld.png"});
+                if (result.sim > 0.8f) {
+                    LtLog.e(mFairy.getLineInfo("在轩辕城或血盟领地"));
+                    setTaskName(0);
+                    return;
+                }
+
                 long dazeTime = mFairy.mMatTime(1215, 128, 61, 16, 0.9f);
                 LtLog.e(mFairy.getLineInfo("发呆时间=" + dazeTime));
-                if (dazeTime > 40) {
+                if (dazeTime > 30) {
                     mFairy.initMatTime();
                     for (int i = 0; i < 20; i++) {
                         mFairy.condit();
-                        result = mFairy.findPic(1112,1,1267,32,"xmld.png");
-                        if (result.sim > 0.8f) {
-                            LtLog.e(mFairy.getLineInfo("在血盟领地"));
-                            setTaskName(0);
-                            return;
-                        }
+
                         result = mFairy.findPic(379,97,560,142,"xuetiao.png");
                         mFairy.onTap(0.7f, result, 1220, 301, 1237, 318, "有敌人切下怪", Sleep);
                         if (result.sim > 0.7f) {
@@ -672,8 +780,6 @@ public class LimitlessTask extends TaskContent {
                         }
                         if (i == 19) {
                             LtLog.e(mFairy.getLineInfo("发呆30秒了重置"));
-
-
 
                             setTaskName(0);
                             return;
@@ -688,7 +794,7 @@ public class LimitlessTask extends TaskContent {
 
                 if (AtFairyConfig.getOption("gxrc").equals("1")  && h==5  && m==1){
                     timingActivity.zchd=true;timingActivity.hejiu=true;timingActivity.ylwq=true;timingActivity.qllj=true;timingActivity.jiuyousan=true;timingActivity.ljp=true;
-                    timingActivity.ljp1=true;timingActivity.xhyx=true;timingActivity.jzwz=true;timingActivity.jdp=true;timingActivity.bwzq=true;
+                    timingActivity.ljp1=true;timingActivity.xhyx=true;timingActivity.jzwz=true;timingActivity.jdp=true;timingActivity.bwzq=true;timingActivity.yslm=true;timingActivity.mqzs=true;
                     eliminate = false;
                     sevenStar = false;
                     LtLog.e("5点重置任务" );
@@ -703,10 +809,10 @@ public class LimitlessTask extends TaskContent {
                     return;
                 }
 
-                result1 = mFairy.findPic(430,8,880,238, "bbm2.png");
+                /*result1 = mFairy.findPic(430,8,880,238, "bbm2.png");
                 if (result1.sim > 0.8f) {
                     gameUtil.clearBag();
-                }
+                }*/
 
                 /*
 
@@ -725,6 +831,7 @@ public class LimitlessTask extends TaskContent {
                 }
 
                 if (qb != null && qb.choice == 1 && timekeep(0, qb.timeMillis, "野外挂机清理背包")) {
+                    LtLog.e("野外挂机清理背包！");
                     gameUtil.clearBag();
                 }
                 if (sjbs != null && sjbs.choice == 1 && timekeep(0, sjbs.timeMillis, "野外挂机升级宝石")) {
@@ -735,10 +842,14 @@ public class LimitlessTask extends TaskContent {
                     gameUtil.goods2();//使用物品
 
                 }
+                LtLog.e("使用物品"+(sywp != null  && timekeep(0, sywp.timeMillis, "野外挂机使用物品")));
+                LtLog.e("清理背包"+(qb != null && qb.choice == 1 && timekeep(0, qb.timeMillis, "野外挂机清理背包")));
                 if (lctx != null && lctx.choice == 1 && timekeep(0, lctx.timeMillis, "野外挂机灵宠探险")) {
                     gameUtil.tanxian();
                 }
 
+                result = mFairy.findPic(858, 480, 1035, 539, "use.png");
+                mFairy.onTap(0.8f, result, "err自动使用", Sleep);
 
                 if (lgz != null && lgz.choice == 1 && timekeep(0, lgz.timeMillis, "野外挂机队长拉跟站")) {
                     gameUtil.pullHeel();
@@ -758,12 +869,11 @@ public class LimitlessTask extends TaskContent {
                     return;
                 }
 
-                result = mFairy.findPic(575, 98, 711, 233, "bagM.png");
+                /*result = mFairy.findPic(550,43,724,236, "man.png");
                 if (result.sim > 0.8f) {
-                    LtLog.e(mFairy.getLineInfo("背包满了炼宝清剿结束"));
-                    LimitlessTask.this.eliminate = true;
-                    LimitlessTask.this.sevenStar = true;
-                }
+                    LtLog.e(mFairy.getLineInfo("背包满了分解下"));
+                    gameUtil.clearBag();
+                }*/
                 result = mFairy.findPic("xmld.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("在血盟领地"));
@@ -784,10 +894,31 @@ public class LimitlessTask extends TaskContent {
                     return;
                 }
 
-                result1 = mFairy.findPic(430,8,880,238, "bbm2.png");
+                long dazeTime = mFairy.mMatTime(1215, 128, 61, 16, 0.9f);
+                LtLog.e(mFairy.getLineInfo("发呆时间=" + dazeTime));
+                if (dazeTime > 40) {
+                    mFairy.initMatTime();
+                    for (int i = 0; i < 20; i++) {
+                        mFairy.condit();
+                        result = mFairy.findPic(1112,1,1267,32,"xmld.png");
+                        if (result.sim > 0.8f) {
+                            LtLog.e(mFairy.getLineInfo("在血盟领地"));
+                            setTaskName(0);
+                            return;
+                        }
+                        if (i == 19) {
+                            LtLog.e(mFairy.getLineInfo("发呆40秒了重置"));
+                            setTaskName(0);
+                            return;
+                        }
+                        Thread.sleep(1000);
+                    }
+                }
+
+                /*result1 = mFairy.findPic(430,8,880,238, "bbm2.png");
                 if (result1.sim > 0.8f) {
                     gameUtil.clearBag();
-                }
+                }*/
 
                 if (back != null && qb.choice == 1 && timekeep(0, back.timeMillis, "定位坐标")) {
                     setTaskName(7);//每隔多少分定位坐标一次
@@ -795,7 +926,9 @@ public class LimitlessTask extends TaskContent {
                 }
 
                 if (qb != null && qb.choice == 1 && timekeep(0, qb.timeMillis, "野外挂机清理背包")) {
+                    LtLog.e("野外挂机清理背包！");
                     gameUtil.clearBag();
+
                 }
                 if (sjbs != null && sjbs.choice == 1 && timekeep(0, sjbs.timeMillis, "野外挂机升级宝石")) {
                     gameUtil.baoshi();
@@ -826,12 +959,14 @@ public class LimitlessTask extends TaskContent {
                     setTaskName(0);
                     return;
                 }
-                result1 = mFairy.findPic("bagM1.png");
-                result = mFairy.findPic(575, 98, 711, 233, "bagM.png");
+                result1 = mFairy.findPic(1043,73,1122,157,"bagM1.png");
+                result = mFairy.findPic(567,24,707,224, "bagM.png");
                 if (result1.sim > 0.8f && result.sim > 0.8f) {
-                    LtLog.e(mFairy.getLineInfo("背包满了炼宝清剿结束"));
+                    /*LtLog.e(mFairy.getLineInfo("背包满了炼宝清剿结束"));
                     LimitlessTask.this.eliminate = true;
-                    LimitlessTask.this.sevenStar = true;
+                    LimitlessTask.this.sevenStar = true;*/
+                    LtLog.e(mFairy.getLineInfo("炼宝清剿背包满清理一次"));
+                    gameUtil.clearBag();
                 }
             }
         }.taskContent(mFairy, "定点挂机中");
@@ -943,21 +1078,23 @@ public class LimitlessTask extends TaskContent {
                 result = mFairy.findPic("beibao2.png");
                 mFairy.onTap(0.8f, result, 1194,39,1202,52, "cha", Sleep);
 
-                result = mFairy.findPic("taskseven.png");
+                result = mFairy.findPic(0,161,42,431,"taskseven.png");
                 mFairy.onTap(0.8f, result, "打开任务栏", Sleep);
 
-                result = mFairy.findPic("yijie.png");
+                result = mFairy.findPic(1093,84,1223,313,"yijie1.png");
                 mFairy.onTap(0.8f, result, "已接", 1500);
                 //mFairy.onTap(0.8f, result, 219,123,229,132,"收纳主线", Sleep);
-                result = mFairy.findPic("huan.png");
 
-                result1 = mFairy.findPic("intask.png");
-                if (result.sim <0.8f && result1.sim > 0.8f){
+                result = mFairy.findPic(64,95,383,240,"huan.png");
+
+                result1 = mFairy.findPic(102,24,255,108,"intask1.png");
+                if (result.sim < 0.8f && result1.sim > 0.8f){
                     mFairy.onTap(0.8f, result1, 219,123,229,132,"收纳主线", Sleep);
                 }
 
                 result = mFairy.findPic(77,217,387,585, new String[]{ "zuoceTreasure2.png","zuoceTreasure3.png"});
                 if (result.sim > 0.7f) {
+                    mFairy.onTap(0.8f, result, 1156,66,1167,78,"关闭任务", Sleep);
                     LtLog.e(mFairy.getLineInfo("已经接取了炼宝任务"));
                     setTaskEnd();
                     return;
@@ -974,7 +1111,7 @@ public class LimitlessTask extends TaskContent {
                     mFairy.taskSlid(err, new int[]{0, 2, 4, 6}, 0, 228, 400, 228, 126, 500, 1500, 2);
                 }
 
-                if (overtime(7, 2)) return;
+                if (overtime(12, 2)) return;
 
             }
 
@@ -989,6 +1126,10 @@ public class LimitlessTask extends TaskContent {
                         setTaskName(3);
                         return;
                     } else {
+
+                        result = mFairy.findPic(113,17,297,315,new String[]{"Activeinterface.png", "Activeinterface1.png"});
+                        mFairy.onTap(0.8f, result, 1229,77,1248,91, "前往关闭", Sleep);
+
                         LimitlessTask.this.sevenStar = true;
                         setTaskEnd();
                         return;
@@ -997,6 +1138,7 @@ public class LimitlessTask extends TaskContent {
             }
 
             public void content_3() throws Exception {
+                if (overtime(12, 1)) return;
 
                 result = mFairy.findPic(500,106,801,249, "bbm1.png");
                 if (result.sim > 0.7f) {
@@ -1004,11 +1146,14 @@ public class LimitlessTask extends TaskContent {
                     gameUtil.clearBag();
                 }
 
-                result = mFairy.findPic(new String[]{"Activeinterface.png", "Activeinterface1.png"});
-                mFairy.onTap(0.8f, result, 1191, 92, 1209, 108, "前往关闭", Sleep);
+                result = mFairy.findPic(113,17,297,315,new String[]{"Activeinterface.png", "Activeinterface1.png"});
+                mFairy.onTap(0.8f, result, 1229,77,1248,91, "前往关闭", Sleep);
 
                 result = mFairy.findPic( "tuteng3.png");
                 mFairy.onTap(0.8f, result, 988,120,1000,131, "关闭", Sleep);
+
+                result = mFairy.findPic(47,40,290,357,new String[]{"Activeinterface5.png","Activeinterface.png","Activeinterface1.png","Activeinterface2.png","Activeinterface3.png","Activeinterface4.png"});
+                mFairy.onTap(0.8f, result, 1222,81,1227,88,"日常界面关闭", Sleep);
 
                 result = mFairy.findPic(91,234,1038,551,new String[]{"death.png","death2.png"});
                 result1 = mFairy.findPic(415,333,577,419,"ky.png");
@@ -1045,8 +1190,11 @@ public class LimitlessTask extends TaskContent {
     }//七星炼宝
 
     int lbcount = 0;
+    int l = 0;
+    int x = 0;
     public int taskand() throws Exception {
         lbcount++;
+
         if (lbcount > 10000) {
             lbcount = 0;
         }
@@ -1056,9 +1204,8 @@ public class LimitlessTask extends TaskContent {
         mFairy.onTap(0.8f, result, 1194,39,1202,52, "cha", Sleep);
         //七星炼宝  && 血盟清剿 && (sevenStar==false || eliminate==false)
         if (AtFairyConfig.getOption("qxlb").equals("1") && AtFairyConfig.getOption("xmqj").equals("1") && (!LimitlessTask.this.eliminate || !LimitlessTask.this.sevenStar)) {
-
+            LtLog.e("lbcount"+lbcount++ +"  炼宝："+l+"  清剿："+x);
             LtLog.e(mFairy.getLineInfo("炼宝和清剿任务中"));
-
             result = mFairy.findPic("team.png");
             mFairy.onTap(0.95f, result, 15, 234, 29, 262, "在队伍栏切换到任务栏", Sleep);
 
@@ -1067,6 +1214,7 @@ public class LimitlessTask extends TaskContent {
 
             result = mFairy.findPic(46, 177, 274, 469, "zuoceTreasure.png");
             if (result.sim > 0.65f) {
+                l=0;
                 lbcount = 0;
                 result1 = mFairy.findPic(result.x + 171, result.y - 15, result.x + 372, result.y + 53, "lbLeftCompletion.png");
                 if (result1.sim > 0.8f) {
@@ -1076,6 +1224,7 @@ public class LimitlessTask extends TaskContent {
 
             result = mFairy.findPic(46, 177, 274, 469, "zuoceEliminate.png");
             if (result.sim > 0.7f) {
+                x=0;
                 lbcount = 0;
                 result1 = mFairy.findPic(result.x + 171, result.y - 15, result.x + 372, result.y + 53, "lbLeftCompletion.png");
                 if (result1.sim > 0.8f) {
@@ -1085,21 +1234,31 @@ public class LimitlessTask extends TaskContent {
 
             result = mFairy.findPic2("qxlbtask.png");
             if (result.sim > 0.8f) {
-                mFairy.taskSlid(lbcount, new int[]{0, 2, 4, 6 ,8,10,12,14}, 1, 76, 380, 76, 220, 500, 1500, 2);
+                l+=1;
+                x+=1;
+                mFairy.taskSlid(lbcount, new int[]{0, 2, 4, 6 ,8,10,12}, 1, 76, 400, 76, 220, 500, 1000, 2);
             } else {
                 lbcount = 0;
             }
-            if (lbcount > 14) {
+
+            if (lbcount>=12){
                 lbcount = 0;
+                mFairy.taskSlid(lbcount, new int[]{0}, 1, 76,220 , 76, 400, 500, 1500, 2);
+                mFairy.taskSlid(lbcount, new int[]{0}, 1, 76,220 , 76, 400, 500, 1500, 2);
+            }
+
+            if ( l > 40 || x > 40) {
+                l=0;
+                x=0;
                 if (!LimitlessTask.this.eliminate) {
                     result = mFairy.findPic("taskseven.png");
                     mFairy.onTap(0.8f, result, "打开任务栏", Sleep);
 
-                    result = mFairy.findPic("yijie.png");
+                    result = mFairy.findPic(1093,84,1223,313,"yijie1.png");
                     mFairy.onTap(0.8f, result, "已接", 1500);
                     //mFairy.onTap(0.8f, result, 219,123,229,132,"收纳主线", Sleep);
                     result = mFairy.findPic("huan.png");
-                    result1 = mFairy.findPic("intask.png");
+                    result1 = mFairy.findPic(102,24,255,108,"intask1.png");
                     if (result.sim <0.8f && result1.sim > 0.8f){
                         mFairy.onTap(0.8f, result1, 219,123,229,132,"收纳主线", Sleep);
                     }
@@ -1117,11 +1276,11 @@ public class LimitlessTask extends TaskContent {
                     result = mFairy.findPic("taskseven.png");
                     mFairy.onTap(0.8f, result, "打开任务栏", Sleep);
 
-                    result = mFairy.findPic("yijie.png");
+                    result = mFairy.findPic(1093,84,1223,313,"yijie1.png");
                     mFairy.onTap(0.8f, result, "已接", 1500);
                     //mFairy.onTap(0.8f, result, 219,123,229,132,"收纳主线", Sleep);
                     result = mFairy.findPic("huan.png");
-                    result1 = mFairy.findPic("intask.png");
+                    result1 = mFairy.findPic(102,24,255,108,"intask1.png");
                     if (result.sim <0.8f && result1.sim > 0.8f){
                         mFairy.onTap(0.8f, result1, 219,123,229,132,"收纳主线", Sleep);
                     }
@@ -1166,11 +1325,11 @@ public class LimitlessTask extends TaskContent {
                     result = mFairy.findPic("taskseven.png");
                     mFairy.onTap(0.8f, result, "打开任务栏", Sleep);
 
-                    result = mFairy.findPic("yijie.png");
+                    result = mFairy.findPic(1093,84,1223,313,"yijie1.png");
                     mFairy.onTap(0.8f, result, "已接", 1500);
                     //mFairy.onTap(0.8f, result, 219,123,229,132,"收纳主线", Sleep);
                     result = mFairy.findPic("huan.png");
-                    result1 = mFairy.findPic("intask.png");
+                    result1 = mFairy.findPic(102,24,255,108,"intask1.png");
                     if (result.sim <0.8f && result1.sim > 0.8f){
                         mFairy.onTap(0.8f, result1, 219,123,229,132,"收纳主线", Sleep);
                     }
@@ -1214,11 +1373,11 @@ public class LimitlessTask extends TaskContent {
                     result = mFairy.findPic("taskseven.png");
                     mFairy.onTap(0.8f, result, "打开任务栏", Sleep);
 
-                    result = mFairy.findPic("yijie.png");
+                    result = mFairy.findPic(1093,84,1223,313,"yijie1.png");
                     mFairy.onTap(0.8f, result, "已接", 1500);
                     //mFairy.onTap(0.8f, result, 219,123,229,132,"收纳主线", Sleep);
                     result = mFairy.findPic("huan.png");
-                    result1 = mFairy.findPic("intask.png");
+                    result1 = mFairy.findPic(102,24,255,108,"intask1.png");
                     if (result.sim <0.8f && result1.sim > 0.8f){
                         mFairy.onTap(0.8f, result1, 219,123,229,132,"收纳主线", Sleep);
                     }

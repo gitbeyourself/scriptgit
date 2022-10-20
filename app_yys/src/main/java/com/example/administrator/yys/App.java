@@ -2,7 +2,7 @@ package com.example.administrator.yys;
 
 import android.app.Application;
 
-import  com.padyun.opencvapi.AtFairyService;
+import com.script.opencvapi.AtFairyService;
 import com.script.opencvapi.LtLog;
 
 import org.opencv.android.OpenCVLoader;

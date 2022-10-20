@@ -29,7 +29,7 @@ public class TaskMain {
      public  TaskMain (AtFairyImpl ypFairy) throws Exception {
          mFairy = ypFairy;
          mFairy.setGameName("神雕侠侣");
-         mFairy.setGameVersion(90);
+         mFairy.setGameVersion(95);
          mFairy.initmMap(30);
          mFairy.initMatTime();
          init();

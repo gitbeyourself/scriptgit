@@ -1,6 +1,4 @@
 package com.script.fairy;
-
-
 import com.script.framework.AtFairyImpl;
 import com.script.framework.TaskContent;
 import com.script.opencvapi.AtFairyConfig;
@@ -11,29 +9,106 @@ import com.script.opencvapi.LtLog;
  * Created by Administrator on 2019/3/22 0022.
  */
 
-public class Abnormal extends TaskContent {
-    GameUtil gameUtil;
+public class  Abnormal extends TaskContent {
     AtFairyImpl mFairy;
     FindResult result;
     FindResult result1;
     FindResult result2;
+    FindResult result3;
+    FindResult result4;
     int x=0;
-
-    public Abnormal(AtFairyImpl ATFairy) throws Exception {
-        mFairy = ATFairy;
-    }
 
     int count_1 = 0;
     long i = 0;
     String task_id = AtFairyConfig.getOption("task_id");
 
+    public Abnormal(AtFairyImpl ATFairy) throws Exception {
+        mFairy = ATFairy;
+    }
     //全局处理
     public void erro() throws Exception {
-//            mFairy.sleep(1000);
 
+        result = mFairy.findPic(315,433,1008,631,new String[]{"Getintogame6.png","Getintogame1.png","Getintogame2.png","Getintogame3.png","Getintogame4.png","Getintogame5.png"});
+        mFairy.onTap(0.8f, result, "err开始游戏", 10000);
+
+        result = mFairy.findPic(984,605,1276,716,new String[]{"Roleentry.png","Roleentry1.png","Roleentry2.png"});
+        mFairy.onTap(0.8f, result, "err角色开始游戏", 10000);
+
+        result = mFairy.findPic(858, 480, 1035, 539, "use.png");
+        mFairy.onTap(0.8f, result, "err自动使用", Sleep);
+
+        result = mFairy.findPic(396,291,867,425,"Slide lock.png");
+        if (result.sim > 0.8f) {
+            LtLog.e(mFairy.getLineInfo("err解锁中"));
+            mFairy.ranSwipe(479,358,915,357,500, (long) 500,0);
+        }
+
+        //七星秘宝 弹窗 四星以上 不包含
+        result4 = mFairy.findPic(936,595,1185,689,"qxAccept.png");
+        if (result4.sim > 0.8f) {
+            result2 = mFairy.findPic(88,179,502,446,"gblianbao.png");
+            if (result2.sim > 0.8f) {
+
+                result = mFairy.findPic(858, 480, 1035, 539, "use.png");
+                result1 = mFairy.findPic(329, 212, 774, 606, "smSure.png");
+                result3 = mFairy.findPic(493, 165, 768, 230, "qljl.png");
+                if (result.sim > 0.8f) {
+                    mFairy.onTap(0.8f, result, "err自动使用", Sleep);
+                } else if (result1.sim > 0.8f) {
+                    mFairy.onTap(0.8f, result1, "err奖励确认", Sleep);
+                } else if (result3.sim > 0.8f) {
+                    mFairy.onTap(0.8f, result3, 622, 493, 647, 506, "err奖励确认", Sleep);
+                }else{
+                LtLog.e(mFairy.getLineInfo(0.8f, result2, "gaobei++++++++++++++++"));
+                if (!AtFairyConfig.getOption("lbsx").equals("1") && !AtFairyConfig.getOption("lbsx").equals("")) {
+                    if (AtFairyConfig.getOption("lbsx").equals("2")) {
+                        // result = mFairy.findPic(815, 446, 876, 519, "lianbaoStar.png");
+                        i = mFairy.getColorNum(840, 479, 852, 491, "14,10,11", 0.92f);
+                        //long i =  mFairy.getColorNum(1080,478,1092,492,"14,10,11",0.92f);
+                        LtLog.e("*********4星" + i);
+                        //LtLog.e(mFairy.getLineInfo(0.8f, result, "没有到4星"));
+                    } else if (AtFairyConfig.getOption("lbsx").equals("3")) {
+                        i = mFairy.getColorNum(918, 479, 935, 493, "14,10,11", 0.92f);
+                        //long i =  mFairy.getColorNum(1080,478,1092,492,"14,10,11",0.92f);
+                        LtLog.e("*********5星" + i);
+                    } else if (AtFairyConfig.getOption("lbsx").equals("4")) {
+                        i = mFairy.getColorNum(999, 480, 1013, 492, "14,10,11", 0.92f);
+                        //long i =  mFairy.getColorNum(1080,478,1092,492,"14,10,11",0.92f);
+                        LtLog.e("*********6星" + i);
+                    } else if (AtFairyConfig.getOption("lbsx").equals("5")) {
+                        // i =  mFairy.getColorNum(840,479,852,491,"14,10,11",0.92f);
+                        i = mFairy.getColorNum(1080, 478, 1092, 492, "14,10,11", 0.92f);
+                        LtLog.e("*********7星" + i);
+                    }
+                    if (i >= 90) {
+                        mFairy.onTap(583, 627, 623, 647, "err刷新", Sleep);
+                    } else {
+                        mFairy.onTap(0.8f, result4, "err七星接受任务", Sleep);
+                    }
+                } else {
+                    mFairy.onTap(0.8f, result4, "err七星接受任务1", Sleep);
+                }
+            }
+            } else {
+                mFairy.onTap(0.8f, result4, "err七星接受任务2", Sleep);
+            }
+        }
+
+        result = mFairy.findPic(823,545,1270,716,"qxComplete.png");
+        mFairy.onTap(0.8f, result, 1057,638,1065,644,"err七星完成任务", Sleep);
+
+
+        result = mFairy.findPic(469,177,806,350,"qr1.png");
+        mFairy.onTap(0.8f, result, 369,361,902,665,"err七星奖励确定", Sleep);
+
+        result = mFairy.findPic(183,72,440,250, "gonggao.png");
+        mFairy.onTap(0.8f, result,1245,19,1252,32, "err公告关", Sleep);
 
         result = mFairy.findPic("gg.png");
         mFairy.onTap(0.8f, result, 1209, 323, 1218, 331, "err关闭误点相片分享", Sleep);
+
+        result = mFairy.findPic(123,14,245,72,"qingyuan.png");
+        mFairy.onTap(0.8f, result, 1155,39,1162,55, "err情缘关闭", Sleep);
 
         result = mFairy.findPic("High fold.png");
         mFairy.onTap(0.8f, result, 636, 433, 648, 442, "err确认高倍", Sleep);
@@ -50,8 +125,6 @@ public class Abnormal extends TaskContent {
         result = mFairy.findPic(121,62,307,359,"smzd.png");
         mFairy.onTap(0.8f, result, 635,624,643,632, "err立即参加", Sleep);
 
-        /*result = mFairy.findPic("shj.png");
-        mFairy.onTap(0.8f, result, 635,624,643,632, "err立即参加", Sleep);*/
         result = mFairy.findPic(363,259,920,487, "cxlj.png");
         mFairy.onTap(0.8f, result, 770,436,780,443,"重新连接确定", 5000);
 
@@ -64,19 +137,6 @@ public class Abnormal extends TaskContent {
                 mFairy.onTap(0.8f, result, "err奖励确认", Sleep);
             }
         }
-        /*else {
-            while(x) {
-                LtLog.e("账号被顶  等待。。。。。。。。。。");
-                mFairy.sleep(300000);
-                result = mFairy.findPic(427,269,854,490,"sfcl.png");
-                if(result.sim < 0.8f) {
-                    LtLog.e("恢复。。。。。。。。。。");
-                    x=false;
-                }
-            }
-        }
-*/
-
 
         result = mFairy.findPic("gg1.png");
         mFairy.onTap(0.8f, result, 1092,292,1106,309, "err关闭公告", Sleep);
@@ -155,67 +215,12 @@ public class Abnormal extends TaskContent {
             mFairy.onTap(0.8f, result, "err取消", Sleep);
         }
 
-          /*  result = mFairy.findPic("xmqjinface.png");
-            if (result.sim > 0.8f) {
-                List<FindResult> listResult = mFairy.findPic(795, 133, 1002, 593, 0.8f, "xmqjUse111.png");
-                if (listResult.size() != 0) {
-                    mFairy.onTap(0.8f, listResult.get(0), listResult.get(0).x, listResult.get(0).y, listResult.get(0).x + 1, listResult.get(0).y + 1, "err清剿使用", Sleep);
-                    mFairy.onTap(0.8f, result, 1031, 122, 1049, 139, "err关闭清剿界面", Sleep);
-                }
-            }*/
-
         result = mFairy.findPic("xmqjinface.png");
         if (result.sim > 0.8f) {
             result = mFairy.findPic(754, 211, 994, 336, "xmqjUse111.png");
             if (result.sim > 0.8f) {
                 mFairy.onTap(0.8f, result, "err 清剿使用", Sleep);
                 mFairy.onTap(0.8f, result, 1031, 122, 1049, 139, "err关闭清剿界面", Sleep);
-            }
-        }
-
-        result = mFairy.findPic(823,545,1270,716,"qxComplete.png");
-        mFairy.onTap(0.8f, result, 1057,638,1065,644,"err七星完成任务", Sleep);
-
-
-        result = mFairy.findPic(469,177,806,350,"qr1.png");
-        mFairy.onTap(0.8f, result, 369,361,902,665,"err七星奖励确定", Sleep);
-
-        //七星秘宝 弹窗 四星以上 不包含
-        result1 = mFairy.findPic("qxAccept.png");
-        if (result1.sim > 0.8f) {
-            result2 = mFairy.findPic(88,179,502,446,"gblianbao.png");
-            if (result2.sim > 0.8f) {
-                LtLog.e(mFairy.getLineInfo(0.8f, result2, "gaobei++++++++++++++++"));
-                if (!AtFairyConfig.getOption("lbsx").equals("1") && !AtFairyConfig.getOption("lbsx").equals("")) {
-                    if (AtFairyConfig.getOption("lbsx").equals("2")) {
-                        // result = mFairy.findPic(815, 446, 876, 519, "lianbaoStar.png");
-                        i = mFairy.getColorNum(840, 479, 852, 491, "14,10,11", 0.92f);
-                        //long i =  mFairy.getColorNum(1080,478,1092,492,"14,10,11",0.92f);
-                        LtLog.e("*********4星" + i);
-                        //LtLog.e(mFairy.getLineInfo(0.8f, result, "没有到4星"));
-                    } else if (AtFairyConfig.getOption("lbsx").equals("3")) {
-                        i = mFairy.getColorNum(918, 479, 935, 493, "14,10,11", 0.92f);
-                        //long i =  mFairy.getColorNum(1080,478,1092,492,"14,10,11",0.92f);
-                        LtLog.e("*********5星" + i);
-                    } else if (AtFairyConfig.getOption("lbsx").equals("4")) {
-                        i = mFairy.getColorNum(999, 480, 1013, 492, "14,10,11", 0.92f);
-                        //long i =  mFairy.getColorNum(1080,478,1092,492,"14,10,11",0.92f);
-                        LtLog.e("*********6星" + i);
-                    } else if (AtFairyConfig.getOption("lbsx").equals("5")) {
-                        // i =  mFairy.getColorNum(840,479,852,491,"14,10,11",0.92f);
-                        i = mFairy.getColorNum(1080, 478, 1092, 492, "14,10,11", 0.92f);
-                        LtLog.e("*********7星" + i);
-                    }
-                    if (i >= 90) {
-                        mFairy.onTap(583, 627, 623, 647, "err刷新", Sleep);
-                    } else {
-                        mFairy.onTap(0.8f, result1, "err七星接受任务", Sleep);
-                    }
-                } else {
-                    mFairy.onTap(0.8f, result1, "err七星接受任务1", Sleep);
-                }
-            } else {
-                mFairy.onTap(0.8f, result1, "err七星接受任务2", Sleep);
             }
         }
 
@@ -324,10 +329,76 @@ public class Abnormal extends TaskContent {
         result = mFairy.findPic(new String[]{"checkvx5.png", "checkvx5_1.png", "shouquan.png"});
         mFairy.onTap(0.8f, result, "err完成qq授权", Sleep);
 
-//        result = mFairy.findPic(293, 440, 1027, 688, "Getintogame1.png");
-//        mFairy.onTap(0.8f, result, "err开始游戏", 10000);
+        result = mFairy.findPic(651,481,875,580,"xxyd.png");
+        mFairy.onTap(0.8f, result, 360,634,369,643,"err角色开始游戏", Sleep);
 
+        result = mFairy.findPic(315,433,1008,631,new String[]{"Getintogame6.png","Getintogame1.png","Getintogame2.png","Getintogame3.png","Getintogame4.png","Getintogame5.png"});
+        mFairy.onTap(0.8f, result, "err开始游戏", 10000);
 
+        result = mFairy.findPic(984,605,1276,716,new String[]{"Roleentry.png","Roleentry1.png","Roleentry2.png"});
+        mFairy.onTap(0.8f, result, "err角色开始游戏", 10000);
+
+        result = mFairy.findPic("errAuthorization.png");
+        if (picCount(0.8f, result, "err授权问题") > 2) {
+            mFairy.onTap(0.8f, result, 903, 263, 904, 264, "err授权问题", Sleep);
+        }
+
+        result=mFairy.findPic(328,227,953,533,"shqw.png");
+        mFairy.onTap(0.8f,result,"稍后前往",500);
+
+        result = mFairy.findPic("errLoginNO.png");
+        mFairy.onTap(0.8f, result, 647, 441, 648, 442, "err登录失败", Sleep);
+
+        //七星秘宝 弹窗 四星以上 不包含
+        result4 = mFairy.findPic(936,595,1185,689,"qxAccept.png");
+        if (result4.sim > 0.8f) {
+            result2 = mFairy.findPic(88,179,502,446,"gblianbao.png");
+            if (result2.sim > 0.8f) {
+
+                result = mFairy.findPic(858, 480, 1035, 539, "use.png");
+                result1 = mFairy.findPic(329, 212, 774, 606, "smSure.png");
+                result3 = mFairy.findPic(493, 165, 768, 230, "qljl.png");
+                if (result.sim > 0.8f) {
+                    mFairy.onTap(0.8f, result, "err自动使用", Sleep);
+                } else if (result1.sim > 0.8f) {
+                    mFairy.onTap(0.8f, result1, "err奖励确认", Sleep);
+                } else if (result3.sim > 0.8f) {
+                    mFairy.onTap(0.8f, result3, 622, 493, 647, 506, "err奖励确认", Sleep);
+                }else{
+                    LtLog.e(mFairy.getLineInfo(0.8f, result2, "gaobei++++++++++++++++"));
+                    if (!AtFairyConfig.getOption("lbsx").equals("1") && !AtFairyConfig.getOption("lbsx").equals("")) {
+                        if (AtFairyConfig.getOption("lbsx").equals("2")) {
+                            // result = mFairy.findPic(815, 446, 876, 519, "lianbaoStar.png");
+                            i = mFairy.getColorNum(840, 479, 852, 491, "14,10,11", 0.92f);
+                            //long i =  mFairy.getColorNum(1080,478,1092,492,"14,10,11",0.92f);
+                            LtLog.e("*********4星" + i);
+                            //LtLog.e(mFairy.getLineInfo(0.8f, result, "没有到4星"));
+                        } else if (AtFairyConfig.getOption("lbsx").equals("3")) {
+                            i = mFairy.getColorNum(918, 479, 935, 493, "14,10,11", 0.92f);
+                            //long i =  mFairy.getColorNum(1080,478,1092,492,"14,10,11",0.92f);
+                            LtLog.e("*********5星" + i);
+                        } else if (AtFairyConfig.getOption("lbsx").equals("4")) {
+                            i = mFairy.getColorNum(999, 480, 1013, 492, "14,10,11", 0.92f);
+                            //long i =  mFairy.getColorNum(1080,478,1092,492,"14,10,11",0.92f);
+                            LtLog.e("*********6星" + i);
+                        } else if (AtFairyConfig.getOption("lbsx").equals("5")) {
+                            // i =  mFairy.getColorNum(840,479,852,491,"14,10,11",0.92f);
+                            i = mFairy.getColorNum(1080, 478, 1092, 492, "14,10,11", 0.92f);
+                            LtLog.e("*********7星" + i);
+                        }
+                        if (i >= 90) {
+                            mFairy.onTap(583, 627, 623, 647, "err刷新", Sleep);
+                        } else {
+                            mFairy.onTap(0.8f, result4, "err七星接受任务", Sleep);
+                        }
+                    } else {
+                        mFairy.onTap(0.8f, result4, "err七星接受任务1", Sleep);
+                    }
+                }
+            } else {
+                mFairy.onTap(0.8f, result4, "err七星接受任务2", Sleep);
+            }
+        }
 
         result = mFairy.findPic("sieve.png");
         if (result.sim > 0.8f) {
@@ -336,22 +407,8 @@ public class Abnormal extends TaskContent {
         }
 
 
-        result = mFairy.findPic("xxyd.png");
-        mFairy.onTap(0.8f, result, 360,634,369,643,"err角色开始游戏", Sleep);
-
-        result = mFairy.findPic("Getintogame1.png");
-        mFairy.onTap(0.8f, result, "err开始游戏", 10000);
-
-        result = mFairy.findPic("Roleentry.png");
-        mFairy.onTap(0.8f, result, "err角色开始游戏", 10000);
-
-        result = mFairy.findPic("errAuthorization.png");
-        if (picCount(0.8f, result, "err授权问题") > 2) {
-            mFairy.onTap(0.8f, result, 903, 263, 904, 264, "err授权问题", Sleep);
-        }
-
-        result = mFairy.findPic("errLoginNO.png");
-        mFairy.onTap(0.8f, result, 647, 441, 648, 442, "err登录失败", Sleep);
+        result = mFairy.findPic("ty.png");
+        mFairy.onTap(0.8f, result, "err同意", Sleep);
 
         result = mFairy.findPic("errHejiu.png");
         mFairy.onTap(0.8f, result, 519, 441, 520, 442, "err喝酒取消", Sleep);
@@ -391,9 +448,6 @@ public class Abnormal extends TaskContent {
         mFairy.onTap(0.8f, result, 437, 389, 448, 397, "err不再提醒", Sleep);
         mFairy.onTap(0.8f, result, 773, 439, 785, 450, "err确定", Sleep);
 
-          /*  result=mFairy.findPic("ymzjwiidow.png");
-            mFairy.onTap(0.8f,result,1231,53,1243,66,"err先关闭遗民战境弹窗",Sleep);*/
-
         result = mFairy.findPic(100, 148, 1074, 229, "hai.png");
         mFairy.onTap(0.8f, result, 1151, 56, 1163, 65, "err先关闭天海山外弹窗", Sleep);
 
@@ -430,6 +484,12 @@ public class Abnormal extends TaskContent {
 
         result = mFairy.findPic("firend refuse.png");
         mFairy.onTap(0.8f, result, "err好友拒绝", Sleep);
+
+        result = mFairy.findPic(823,545,1270,716,"qxComplete.png");
+        mFairy.onTap(0.8f, result, 1057,638,1065,644,"err七星完成任务", Sleep);
+
+        result = mFairy.findPic(469,177,806,350,"qr1.png");
+        mFairy.onTap(0.8f, result, 369,361,902,665,"err七星奖励确定", Sleep);
 
         result = mFairy.findPic("see.png");
         mFairy.onTap(0.8f, result, "err一会看", Sleep);

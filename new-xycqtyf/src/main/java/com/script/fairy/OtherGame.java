@@ -1,4 +1,5 @@
 package com.script.fairy;
+
 import com.script.framework.AtFairyImpl;
 import com.script.framework.TaskContent;
 import com.script.opencvapi.AtFairyConfig;
@@ -14,6 +15,7 @@ import java.util.Random;
 public class OtherGame  extends TaskContent {
     AtFairyImpl mFairy;
     FindResult result;
+    FindResult result1;
     GameUtil gameUtil;
     public OtherGame(AtFairyImpl ATFairy) throws Exception {
         mFairy = ATFairy;
@@ -114,7 +116,7 @@ public class OtherGame  extends TaskContent {
                 result =mFairy.findPic("SowSure1.png");
                 mFairy.onTap(0.8f,result,"播种确定",6000);
 
-                result =mFairy.findPic("zcShop.png");
+                result =mFairy.findPic(106,11,256,65,"zcShop.png");
                 if (result.sim>0.8f) {
                     LtLog.e(mFairy.getLineInfo("商店没菜了要买菜"));
                     if (food == 1) {
@@ -222,7 +224,7 @@ public class OtherGame  extends TaskContent {
                 result = mFairy.findPic("liaotiankuang.png");
                 mFairy.onTap( 0.8f, result, "收起聊天框" , Sleep);
 
-                result = mFairy.findPic("LeftCaptain.png");
+                result = mFairy.findPic(0,165,33,400,new String[]{"LeftCaptain.png","LeftCaptain3.png"});
                 mFairy.onTap( 0.9f, result, "左侧队伍", Sleep);
 
                 result = mFairy.findPic("CreateTeam.png");
@@ -303,11 +305,14 @@ public class OtherGame  extends TaskContent {
                     mFairy.onTap(0.8f, result, 189,660,209,670,"打开输入框", 3000);
                     mFairy.inputText("打雪仗来人+++++");
                     mFairy.condit();
-                    result = mFairy.findPic(1191,140,1262,203,new String[]{"new_textsure.png","new_textsure1.png","new_textsure2.png"});
-                    mFairy.onTap(0.7f, result,   "确定文本", 2000);
-                    mFairy.onTap(0.7f, result,   544,657,583,671,"发送", 2000);
-                    mFairy.onTap(0.7f, result,   622,311,632,329,"收起聊天框", 2000);
-                    setTaskName(0);return;
+                    result = mFairy.findPic(1071,68,1274,292,new String[]{"new_textsure.png","new_textsure1.png","new_textsure2.png","new_textsure3.png"});
+                    if (result.sim > 0.8f) {
+                        mFairy.onTap(0.7f, result, "确定文本", 2000);
+                        mFairy.onTap(0.7f, result, 544, 657, 583, 671, "发送", 2000);
+                        mFairy.onTap(0.7f, result, 622, 311, 632, 329, "收起聊天框", 2000);
+                        setTaskName(0);
+                        return;
+                    }
                 }
             }
             public void content_3() throws Exception {
@@ -324,28 +329,35 @@ public class OtherGame  extends TaskContent {
                     mFairy.onTap(0.8f, result, "关叉", 2000);
                 }
 
+                result = mFairy.findPic(451,78,1116,240, new String[]{"hdcj.png","hdcj1.png"});
+                mFairy.onTap(0.8f, result, "欢度春节", 2000);
+                mFairy.onTap(0.8f, result, 60,171,89,194,"欢度春节", 2000);
+
+                result = mFairy.findPic( 399,171,521,249,"dxzqw.png");
+                mFairy.onTap(0.8f, result, "前往", Sleep);
+
                 result = mFairy.findPic(605,19,1115,278, "daxuezhang.png");
                 mFairy.onTap(0.8f, result, "打雪仗", Sleep);
 
                 result = mFairy.findPic( "xzqd.png");
                 mFairy.onTap(0.8f, result, "取消战袍", Sleep);
 
-                result = mFairy.findPic( "xueren.png");
+                result = mFairy.findPic( 302,172,1037,576,"xueren.png");
                 mFairy.onTap(0.8f, result, "打雪 人", Sleep);
 
-                result = mFairy.findPic("dxzpp.png");
+                result = mFairy.findPic(724,518,1090,641,"dxzpp.png");
                 mFairy.onTap(0.8f, result, "组队匹配", Sleep);
                 if (result.sim > 0.8f) {
                     err=0;
                 }
 
-                result = mFairy.findPic("dxzrbgou.png");
+                result = mFairy.findPic(429,39,824,218,"dxzrbgou.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("人不够"));
                     setTaskName(0);return;
                 }
 
-                result = mFairy.findPic("ppz.png");
+                result = mFairy.findPic(727,470,1088,641,"ppz.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("匹配中"));
                     err=0;
@@ -355,23 +367,32 @@ public class OtherGame  extends TaskContent {
                 mFairy.onTap(0.8f,result,"加入战斗",Sleep);
 
 
-                result =mFairy.findPic("xqdzz.png");
+                result =mFairy.findPic(1115,2,1280,32,"xqdzz.png");
                 if (result.sim > 0.8f) {
                     err=0;
                     LtLog.e(mFairy.getLineInfo("冰雪大作战内"));
-                    int x = new Random().nextInt(170) + 87;
-                    int y = new Random().nextInt(164) + 493;
-                    mFairy.ranSwipe(172,570, x, y, 2000, (long) 1000, 2);
+                    result =mFairy.findPic(469,4,811,77,"miao.png");
+                    if (result.sim > 0.8f) {
+                        LtLog.e(mFairy.getLineInfo("冰雪大作读秒中"));
+                    }else{
+                        int x = new Random().nextInt(170) + 87;
+                        int y = new Random().nextInt(164) + 493;
+                        mFairy.ranSwipe(172, 570, x, y, 2000, (long) 1000, 2);
 
-                    mFairy.onTap(0.8f,result,1177,608,1197,624,"普工一下",100);
-                    mFairy.onTap(0.8f,result,1177,608,1197,624,"普工一下",100);
-                    mFairy.onTap(0.8f,result,1177,608,1197,624,"普工一下",100);
+                        mFairy.onTap(0.8f, result, 1177, 608, 1197, 624, "普工一下", 100);
+                        mFairy.onTap(0.8f, result, 1177, 608, 1197, 624, "普工一下", 100);
+                        mFairy.onTap(0.8f, result, 1177, 608, 1197, 624, "普工一下", 100);
+                        mFairy.onTap(0.8f, result, 1049,653,1058,664, "技能攻击", 100);
 
-                    result =mFairy.findPic("Openbox.png");
-                    mFairy.onTap(0.8f,result,"开箱",5000);
 
+                        result = mFairy.findPic("Openbox.png");
+                        mFairy.onTap(0.8f, result, "开箱", 5000);
+
+                        result = mFairy.findPic( 302,172,1037,576,"xueren.png");
+                        mFairy.onTap(0.8f, result, "打雪 人", Sleep);
+                    }
                 }
-                result =mFairy.findPic("xqlikai.png");
+                result =mFairy.findPic(507,525,773,636,"xqlikai.png");
                 mFairy.onTap(0.8f,result,"离开",Sleep);
             }
 
@@ -401,22 +422,42 @@ public class OtherGame  extends TaskContent {
                 result =mFairy.findPic("jybattle.png");
                 mFairy.onTap(0.8f,result,"加入战斗",Sleep);
 
-                result =mFairy.findPic("xqdzz.png");
+                result = mFairy.findPic(727,470,1088,641,"ppz.png");
                 if (result.sim > 0.8f) {
-                    LtLog.e(mFairy.getLineInfo("冰雪大作战内"));
-                    int x = new Random().nextInt(170) + 87;
-                    int y = new Random().nextInt(164) + 493;
-                    mFairy.ranSwipe(172,570, x, y, 2000, (long) 1000, 2);
-
-                    mFairy.onTap(0.8f,result,1177,608,1197,624,"普工一下",100);
-                    mFairy.onTap(0.8f,result,1177,608,1197,624,"普工一下",100);
-                    mFairy.onTap(0.8f,result,1177,608,1197,624,"普工一下",100);
-
-                    result =mFairy.findPic("Openbox.png");
-                    mFairy.onTap(0.8f,result,"开箱",5000);
-
+                    LtLog.e(mFairy.getLineInfo("匹配中"));
+                    err=0;
                 }
-                result =mFairy.findPic("xqlikai.png");
+
+                result =mFairy.findPic("jybattle.png");
+                mFairy.onTap(0.8f,result,"加入战斗",Sleep);
+
+
+                result =mFairy.findPic(1115,2,1280,32,"xqdzz.png");
+                if (result.sim > 0.8f) {
+                    err=0;
+                    LtLog.e(mFairy.getLineInfo("冰雪大作战内"));
+                    result =mFairy.findPic(469,4,811,77,"miao.png");
+                    if (result.sim > 0.8f) {
+                        LtLog.e(mFairy.getLineInfo("冰雪大作读秒中"));
+                    }else{
+                        int x = new Random().nextInt(170) + 87;
+                        int y = new Random().nextInt(164) + 493;
+                        mFairy.ranSwipe(172, 570, x, y, 2000, (long) 1000, 2);
+
+                        mFairy.onTap(0.8f, result, 1177, 608, 1197, 624, "普工一下", 100);
+                        mFairy.onTap(0.8f, result, 1177, 608, 1197, 624, "普工一下", 100);
+                        mFairy.onTap(0.8f, result, 1177, 608, 1197, 624, "普工一下", 100);
+                        mFairy.onTap(0.8f, result, 1049,653,1058,664, "技能攻击", 100);
+
+
+                        result = mFairy.findPic("Openbox.png");
+                        mFairy.onTap(0.8f, result, "开箱", 5000);
+
+                        result = mFairy.findPic( 302,172,1037,576,"xueren.png");
+                        mFairy.onTap(0.8f, result, "打雪 人", Sleep);
+                    }
+                }
+                result =mFairy.findPic(507,525,773,636,"xqlikai.png");
                 mFairy.onTap(0.8f,result,"离开",Sleep);
 
                 result = mFairy.findPic("dxztcfb.png");

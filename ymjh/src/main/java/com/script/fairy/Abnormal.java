@@ -24,12 +24,21 @@ public class Abnormal  {
 
     //全局处理
     public void erro() throws Exception {
-        result=mFairy.findPic("word sheng.png");
+        result=mFairy.findPic(529,502,714,564,"word sheng.png");
         mFairy.onTap(0.8f,result,"退出省电模式",1000);
 
         result=mFairy.findPic("zb.png");
         mFairy.onTap(0.8f,result,"装备",1000);
 
+        result=mFairy.findPic(500,508,766,617,"rtjh.png");
+        mFairy.onTap(0.8f,result,"装备",1000);
+
+        result=mFairy.findPic(968,574,1272,704,"jryx.png");
+        mFairy.onTap(0.8f,result,"进入游戏",1000);
+
+
+        result=mFairy.findPic(478,577,810,695,"djgb.png");
+        mFairy.onTap(0.8f,result,"点击关闭",1000);
 
         result=mFairy.findPic("use yes.png");
         mFairy.onTap(0.8f,result,"确认使用",1000);

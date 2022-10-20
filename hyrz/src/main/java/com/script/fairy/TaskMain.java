@@ -25,7 +25,7 @@ public class TaskMain {
      public  TaskMain (AtFairyImpl ypFairy) throws Exception {
          mFairy = ypFairy;
          mFairy.setGameName("火影忍者");
-         mFairy.setGameVersion(72);
+         mFairy.setGameVersion(75);
          init();
          gameUtil = new GameUtil(mFairy);
          teamTask=new TeamTask(mFairy);

@@ -1,1 +1,146 @@
-{"41423": {"k": "szhw", "value": "1"}, "41421": {"k": "yzhj", "value": "1"}, "41419": {"k": "jypy", "value": "1"}, "41417": {"k": "jhxs", "value": "1"}, "41415": {"k": "wltf", "value": "1"}, "41513": {"k": "jhjs", "value": "wrg-2"}, "41511": {"k": "jhjs", "value": "wjsz-2"}, "41509": {"k": "jhjs", "value": "xyg-2"}, "41507": {"k": "jhjs", "value": "wrg-1"}, "41505": {"k": "jhjs", "value": "wjsz-1"}, "41503": {"k": "jhjs", "value": "xyg-1"}, "41499": {"k": "jhjs", "value": "0"}, "40923": {"k": "jhmb", "value": "5"}, "40921": {"k": "jhmb", "value": "4"}, "40919": {"k": "jhmb", "value": "3"}, "40917": {"k": "jhmb", "value": "2"}, "40915": {"k": "jhmb", "value": "1"}, "5759": {"k": "jhxs", "value": 1}, "5761": {"k": "szhw", "value": 1}, "5763": {"k": "jhjs", "value": 1}, "5765": {"k": "jypy", "value": 1}, "5767": {"k": "wltf", "value": 1}, "5769": {"k": "yzhj", "value": 1}, "7844": {"k": "num", "value": 1}, "41235": {"k": "famu1", "value": "0"}, "41219": {"k": "famu", "value": "anshu"}, "41217": {"k": "famu", "value": "songshu"}, "41215": {"k": "famu", "value": "fengshu"}, "41213": {"k": "famu", "value": "yushu"}, "41211": {"k": "famu", "value": "cuizhu"}, "41209": {"k": "famu", "value": "kumuzhalan"}, "41249": {"k": "caicao", "value": "lingzhi"}, "41247": {"k": "caicao", "value": "yeshanshen"}, "41245": {"k": "caicao", "value": "dilingguo"}, "41243": {"k": "caicao", "value": "zhuguo"}, "41241": {"k": "caicao", "value": "yehua"}, "41239": {"k": "caicao", "value": "zacao"}, "41237": {"k": "caicao1", "value": "0"}, "41263": {"k": "wakuang", "value": "wujingkuang"}, "41261": {"k": "wakuang", "value": "zumulvkuang"}, "41259": {"k": "wakuang", "value": "jinkuang"}, "41257": {"k": "wakuang", "value": "liyinkuang"}, "41255": {"k": "wakuang", "value": "huangtongkuang"}, "41253": {"k": "wakuang1", "value": "0"}, "41251": {"k": "wakuang", "value": "suishi"}, "41285": {"k": "diaoyu", "value": "jiangtun"}, "41283": {"k": "diaoyu", "value": "guiyu"}, "41281": {"k": "diaoyu", "value": "hetun"}, "41279": {"k": "diaoyu", "value": "luyu"}, "41277": {"k": "diaoyu", "value": "yongyu"}, "41275": {"k": "diaoyu", "value": "shanyu"}, "41273": {"k": "diaoyu", "value": "lianyu"}, "41271": {"k": "diaoyu", "value": "caoyu"}, "41269": {"k": "diaoyu", "value": "niqiu"}, "41267": {"k": "diaoyu", "value": "liyu"}, "41265": {"k": "diaoyu1", "value": "0"}, "41317": {"k": "caifeng", "value": "ksnyZ"}, "41315": {"k": "caifeng", "value": "fhsjZ"}, "41313": {"k": "caifeng", "value": "sjxnZ"}, "41311": {"k": "caifeng", "value": "ksnyM"}, "41309": {"k": "caifeng", "value": "fhsjM"}, "41307": {"k": "caifeng", "value": "sjxnM"}, "41305": {"k": "caifeng", "value": "ksnyX"}, "41303": {"k": "caifeng", "value": "fhsjX"}, "41301": {"k": "caifeng", "value": "sjxnX"}, "41299": {"k": "caifeng", "value": "ksnyW"}, "41297": {"k": "caifeng", "value": "fhsjW"}, "41295": {"k": "caifeng", "value": "sjxnW"}, "41293": {"k": "caifeng", "value": "ksnyY"}, "41291": {"k": "caifeng", "value": "fhsjY"}, "41289": {"k": "caifeng", "value": "sjxnY"}, "41287": {"k": "caifeng1", "value": "0"}, "54512": {"k": "caicao", "value": "yehua"}, "54514": {"k": "caicao", "value": "zacao"}, "54516": {"k": "caicao", "value": "zhuguo"}, "54518": {"k": "caicao", "value": "dilingguo"}, "54520": {"k": "caicao", "value": "yeshanshen"}, "54522": {"k": "caicao", "value": "lingzhi"}, "54524": {"k": "caicao1", "value": "0"}, "54526": {"k": "famu", "value": "kumuzhalan"}, "54528": {"k": "famu", "value": "cuizhu"}, "54530": {"k": "famu", "value": "yushu"}, "54532": {"k": "famu", "value": "fengshu"}, "54534": {"k": "famu", "value": "songshu"}, "54536": {"k": "famu", "value": "anshu"}, "54538": {"k": "famu1", "value": "0"}, "54540": {"k": "wakuang", "value": "suishi"}, "54542": {"k": "wakuang", "value": "liyinkuang"}, "54544": {"k": "wakuang", "value": "huangtongkuang"}, "54546": {"k": "wakuang", "value": "jinkuang"}, "54548": {"k": "wakuang", "value": "zumulvkuang"}, "54550": {"k": "wakuang", "value": "wujingkuang"}, "54552": {"k": "wakuang1", "value": "0"}, "54554": {"k": "diaoyu", "value": "liyu"}, "54556": {"k": "diaoyu", "value": "niqiu"}, "54558": {"k": "diaoyu", "value": "lianyu"}, "54560": {"k": "diaoyu", "value": "luyu"}, "54562": {"k": "diaoyu1", "value": "0"}, "54564": {"k": "diaoyu", "value": "caoyu"}, "54566": {"k": "diaoyu", "value": "shanyu"}, "54568": {"k": "diaoyu", "value": "yongyu"}, "54570": {"k": "diaoyu", "value": "hetun"}, "54572": {"k": "diaoyu", "value": "guiyu"}, "54574": {"k": "diaoyu", "value": "jiangtun"}, "54576": {"k": "caifeng", "value": "ksnyZ"}, "54578": {"k": "caifeng", "value": "fhsjZ"}, "54580": {"k": "caifeng", "value": "sjxnZ"}, "54582": {"k": "caifeng", "value": "sjxnM"}, "54584": {"k": "caifeng", "value": "fhsjM"}, "54586": {"k": "caifeng", "value": "ksnyM"}, "54588": {"k": "caifeng", "value": "ksnyX"}, "54590": {"k": "caifeng", "value": "fhsjX"}, "54592": {"k": "caifeng", "value": "sjxnX"}, "54594": {"k": "caifeng", "value": "ksnyW"}, "54596": {"k": "caifeng", "value": "sjxnW"}, "54598": {"k": "caifeng", "value": "fhsjW"}, "54600": {"k": "caifeng", "value": "ksnyY"}, "54602": {"k": "caifeng", "value": "fhsjY"}, "54604": {"k": "caifeng", "value": "sjxnY"}, "54606": {"k": "caifeng1", "value": "0"}, "41619": {"k": "gpjs", "value": "1"}, "41321": {"k": "ky", "value": "1"}, "35719": {"k": "gpjs", "value": "1"}, "35705": {"k": "jhjs", "value": "1"}, "35701": {"k": "jhpml", "value": "1"}, "35699": {"k": "cgss", "value": "1"}, "35815": {"k": "mksy", "value": "1"}, "35711": {"k": "dfpe", "value": "1"}, "35709": {"k": "slrw", "value": "1"}, "35707": {"k": "bprw", "value": "1"}, "35713": {"k": "xxzy", "value": "1"}, "35825": {"k": "djg", "value": "1"}, "35821": {"k": "jhyxb", "value": "1"}, "35817": {"k": "hslj", "value": "1"}, "35827": {"k": "mryg", "value": "1"}, "41515": {"k": "sign", "value": "1"}, "41325": {"k": "jhkz", "value": "1"}, "39491": {"k": "zbg", "value": "1"}, "39489": {"k": "fl", "value": "1"}}
+{
+	"41423": {
+		"k": "szhw",
+		"value": "1"
+	},
+	"41421": {
+		"k": "yzhj",
+		"value": "1"
+	},
+	"41419": {
+		"k": "jypy",
+		"value": "1"
+	},
+	"41417": {
+		"k": "jhxs",
+		"value": "1"
+	},
+	"41415": {
+		"k": "wltf",
+		"value": "1"
+	},
+	"41499": {
+		"k": "jhjs",
+		"value": "0"
+	},
+	"40923": {
+		"k": "jhmb",
+		"value": "5"
+	},
+	"40921": {
+		"k": "jhmb",
+		"value": "4"
+	},
+	"40919": {
+		"k": "jhmb",
+		"value": "3"
+	},
+	"40917": {
+		"k": "jhmb",
+		"value": "2"
+	},
+	"40915": {
+		"k": "jhmb",
+		"value": "1"
+	},
+	"5759": {
+		"k": "jhxs",
+		"value": 1
+	},
+	"5761": {
+		"k": "szhw",
+		"value": 1
+	},
+	"5763": {
+		"k": "jhjs",
+		"value": 1
+	},
+	"5765": {
+		"k": "jypy",
+		"value": 1
+	},
+	"5767": {
+		"k": "wltf",
+		"value": 1
+	},
+	"5769": {
+		"k": "yzhj",
+		"value": 1
+	},
+	"41619": {
+		"k": "gpjs",
+		"value": "1"
+	},
+	"41321": {
+		"k": "ky",
+		"value": "1"
+	},
+	"35719": {
+		"k": "gpjs",
+		"value": "1"
+	},
+	"35705": {
+		"k": "jhjs",
+		"value": "1"
+	},
+	"35701": {
+		"k": "jhpml",
+		"value": "1"
+	},
+	"35699": {
+		"k": "cgss",
+		"value": "1"
+	},
+	"35815": {
+		"k": "mksy",
+		"value": "1"
+	},
+	"35711": {
+		"k": "dfpe",
+		"value": "1"
+	},
+	"35709": {
+		"k": "slrw",
+		"value": "1"
+	},
+	"35707": {
+		"k": "bprw",
+		"value": "1"
+	},
+	"35713": {
+		"k": "xxzy",
+		"value": "1"
+	},
+	"35825": {
+		"k": "djg",
+		"value": "1"
+	},
+	"35821": {
+		"k": "jhyxb",
+		"value": "1"
+	},
+	"35817": {
+		"k": "hslj",
+		"value": "1"
+	},
+	"35827": {
+		"k": "mryg",
+		"value": "1"
+	},
+	"41515": {
+		"k": "sign",
+		"value": "1"
+	},
+	"41325": {
+		"k": "jhkz",
+		"value": "1"
+	},
+	"39491": {
+		"k": "zbg",
+		"value": "1"
+	},
+	"39489": {
+		"k": "fl",
+		"value": "1"
+	}
+}

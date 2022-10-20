@@ -242,10 +242,10 @@ public class Util extends  TaskContent{
             boolean increa=true;
             int closeNum=5,task_id;
 
-            @Override
+/*            @Override
             public void create() throws Exception {
                 task_id=Integer.parseInt(AtFairyConfig.getOption("task_id"));
-            }
+            }*/
 
             @Override
             public void content_0() throws Exception {
@@ -276,6 +276,9 @@ public class Util extends  TaskContent{
                 mFairy.onTap(0.8f,result,"关闭1",1000);
 
                 result=mFairy.findPic(841,1,1280,246,"pic close2.png");
+                mFairy.onTap(0.8f,result,"关闭2",1000);
+
+                result=mFairy.findPic(841,1,1280,246,"pic close3.png");
                 mFairy.onTap(0.8f,result,"关闭2",1000);
 
                 //关闭
@@ -423,8 +426,11 @@ public class Util extends  TaskContent{
                         result=mFairy.findPic("pic activity1.png");
                         mFairy.onTap(0.8f,result,"进入活动1",1000);
 
-                        result=mFairy.findPic("pic open system.png");
-                        mFairy.onTap(0.8f,result,"展开系统",1000);
+                        result=mFairy.findPic(1002,246,1272,351,"zuoqi2.png");
+                        if(result.sim > 0.8f){
+                            result=mFairy.findPic(1112,148,1272,349,"pic open system.png");
+                            mFairy.onTap(0.8f,result,"展开系统",1000);
+                        }
                     }
              //   }
 
@@ -454,7 +460,7 @@ public class Util extends  TaskContent{
                     //类型分页
                     result=mFairy.findPic(118,635,999,720,"word activity "+option+".png");
                     if(result.sim>0.8f){
-                        result=mFairy.findPic(str);
+                        result=mFairy.findPic(34,50,1263,646,str);
                         if(result.sim>0.8f){
                             LtLog.e(mFairy.getLineInfo("找到"+str));
 
@@ -767,32 +773,37 @@ public class Util extends  TaskContent{
             @Override
             public void content_1() throws Exception {
                 overtime(6,0);
-              /*  result=mFairy.findPic("pic up tip.png");
-                if(result.sim>0.8f){*/
-                result=mFairy.findPic("word lu.png");
+                result=mFairy.findPic(1002,246,1272,351,"zuoqi2.png");
                 LtLog.e("***"+result.sim);
-                if(result.sim>0.8f){
-                    result=mFairy.findPic("pic open system.png");
+                if(result.sim > 0.8f){
+                    result=mFairy.findPic(1112,148,1272,349,"pic open system.png");
                     mFairy.onTap(0.8f,result,"展开系统",1000);
-                    LtLog.e("/////"+result.sim);
+
+                    mFairy.ranSwipe(1254,646, 1252,266, 300, Sleep);
                 }
-            //mFairy.ranSwipe(1121,653,1112,331,500,500l,0);
-                result=mFairy.findPic(944,226,1270,708,"pic setting.png");
+
+                result=mFairy.findPic(958,237,1267,673,"pic setting.png");
                 mFairy.onTap(0.8f,result,"进入设置",1000);
-                if (result.sim < 0.8f){
-                    LtLog.e("滑动");
-                    mFairy.ranSwipe(1144,502,1137,330,500,1000);
+
+                result=mFairy.findPic(112,203,457,548,"word setting mode2.png");
+                if (result.sim > 0.8f){
+                    err=0;
+                    mFairy.onTap(0.8f,result,"界面模式",1000);
+                    mFairy.onTap(0.8f,result,824,314,836,331,"夜泊模式",1000);
+                    mFairy.onTap(0.8f,result,632,488,642,497,"确定",1000);
                 }
- //               }
 
-                result=mFairy.findPic(108,186,467,568,new String[]{"word setting model.png","word setting model1.png","word setting mode2.png"});
-                mFairy.onTap(0.8f,result,"打开界面模式",1000);
 
-                result=mFairy.findPic("word select interface.png");
-                mFairy.onTap(0.8f,result,732,350,744,362,"夜泊模式",1000);
-                mFairy.onTap(0.8f,result,625,488,645,505,"确定",1000);
-                mFairy.onTap(0.8f,result,1109,64,1125,82,"关闭",1000);
-                if(result.sim>0.8f)setTaskEnd();
+                result=mFairy.findPic(1052,108,1179,575,"word setting mode.png");
+                mFairy.onTap(0.8f,result,"打开画面",1000);
+
+                result=mFairy.findPic(415,199,543,264,"liuchang.png");
+                if (result.sim > 0.8f){
+                    err=0;
+                    mFairy.onTap(0.8f,result,"流畅",1000);
+                    mFairy.onTap(0.8f,result,1116,69,1123,78,"关闭",1000);
+                }
+                if(result.sim>0.8f)setTaskEnd();return;
             }
 
 

@@ -1,5 +1,6 @@
 package com.example.administrator.yys;
 
+import com.script.framework.AtFairyImpl;
 import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 public class SingleTask {
 
+    AtFairyImpl mFairy1;
     yys mFairy;
     FindResult result;
     CommonFunction comm;
@@ -267,6 +269,88 @@ public class SingleTask {
 
         }
     }//突破
+
+    public void yyltp()throws Exception{
+        int num=0;
+        while (true) {
+            result = mFairy.findPic2(comm.setImg("jujue.png"));
+            comm.Click(0.85f, result, comm.getImg(), "封妖拒绝", 1000);
+
+            result = comm.arrayCompare(0.85f, new String[]{"h1.png", "h2.png", "h3.png"});
+            comm.arrayClick(0.85f, result, "继续", 1000);
+
+            result = mFairy.findPic2(45, 611, 1026, 715, comm.setImg("jj.png"));
+            comm.Click(0.85f, result, comm.getImg(), "结界突破", 1000);
+
+            result = mFairy.findPic2(1182,207,1264,489, comm.setImg("yyl.png"));
+            comm.Click(0.85f, result, comm.getImg(), "阴阳寮突破", 1000);
+
+            // result = mFairy.findPic2(comm.setImg("This week.png"));
+            result = comm.arrayCompare(0.75f, new String[]{"tpjl.png", "tpjl1.png"});
+            if (result.sim > 0.75f) {
+                LtLog.e("------识别到再结界突破界面里");
+                result = mFairy.findPic2(268,560,295,592,comm.setImg("jjEnd2.png"));
+                if (result.sim > 0.98f) {
+                    LtLog.e(comm.getText("奖励次数,End!"));
+                    return;
+                }
+
+                if (num >= 8) {
+                    result = mFairy.findPic2(262,556,296,595,comm.setImg("6.png"));
+                    if (result.sim > 0.95f) {
+
+                    } else {
+                        mFairy1.ranSwipe(1096,70, 1096,621, 2,1000,(long)1000);
+                    }
+                    num = 0;
+                }
+
+                result = mFairy.findPic2(248, 273, 1231, 691, comm.setImg("jingong.png"));
+                LtLog.e("--------------"+result.sim);
+                if (result.sim > 0.8f) {
+                    comm.Click(0.8f, result, comm.getImg(), "进攻", 300);
+                    for (int i = 0; i < 8; i++) {
+                        result = mFairy.findPic2(comm.setImg("jjEnd1.png"));
+                        if (result.sim > 0.8f) {
+                            LtLog.e(comm.getText("卷轴不足,End!"));
+                            return;
+                        }
+                    }
+                    Thread.sleep(3000);
+                    continue;
+                }
+                switch (num) {
+                    case 1:
+                    case 2:
+                        comm.spot(600 + ((num-1) * 350), 150, "第" + num + "个", 1500);
+                        break;
+                    case 3:
+                    case 4:
+                        comm.spot(600 + ((num - 3) * 350), 285, "第" + num + "个", 1500);
+                        break;
+                    case 5:
+                    case 6:
+                        comm.spot(600 + ((num - 5) * 350), 420, "第" + num + "个", 1500);
+                        break;
+                    case 7:
+                    case 8:
+                        comm.spot(600 + ((num - 7) * 350), 552, "第" + num + "个", 1500);
+                        break;
+                }
+                num++;
+            }
+
+            result = mFairy.findPic2(994,466,1274,650,comm.setImg("jia.png"));
+            comm.Click(0.8f, result, comm.getImg(), "准备", 3000);
+
+            result = mFairy.findPic2(comm.setImg("auto.png"));
+            comm.Click(0.9f, result, comm.getImg(), "自动战斗", 1000);
+
+            result =mFairy1.findPic(511,642,749,716,"djpm.png");
+            mFairy1.onTap(0.8f,result,749,697,755,702,"点击屏幕继续",1000);
+
+        }
+    }//阴阳寮突破
 
     public class ControlSplit {
         public int choice;

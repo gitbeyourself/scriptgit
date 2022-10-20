@@ -81,7 +81,7 @@ public class Abnormal  {
         result = mFairy.findPic("xssz.png");
         mFairy.onTap(0.8f, result, 612, 444, 664, 466, "err设置音效确定", 100);
 
-        result = mFairy.findPic( "tctz.png");
+        result = mFairy.findPic( 337,498,533,603,"tctz.png");
         mFairy.onTap(0.8f,result, 840,537,890,558,"err退出挑战", 100);
 
         result = mFairy.findPic( "liaotian.png");
@@ -95,6 +95,12 @@ public class Abnormal  {
 
         result = mFairy.findPic( "Start the game.png");
         mFairy.onTap(0.8f,result, "err开始游戏", 100);
+
+        result = mFairy.findPic(564,143,710,252,"tishi.png");
+        if (result.sim > 0.8f) {
+            result = mFairy.findPic( 390,336,896,542,"queding.png");
+            mFairy.onTap(0.8f,result, "err确定", 100);
+        }
 
         result = mFairy.findPic( "fail1.png");
         mFairy.onTap(0.8f,result, "err失败了", 100);
